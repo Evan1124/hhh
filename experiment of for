@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{  printf("这是一个计算从1加到自然数n的程序\n请输入任一自然数n，然后按回车键\n");
+   int a;
+   int i;
+   int x;
+   scanf("%d",&x);
+   for(a=0;i<=x;i++)
+{   a=a + i;
+}
+   printf("从1加到%d的和为:\n%d\n",x,a);
+   system("pause");
+   return 0;
+   
+} 
