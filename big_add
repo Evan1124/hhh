@@ -1,0 +1,116 @@
+#include<stdio.h>
+void bigadd(int reala,int realb)
+{int counta=0;
+  int countb=0;
+  int a1=reala;
+  int b1=realb;
+  while(a1!=0)
+  { a1=a1/10;
+    counta++;
+  }
+  while(b1!=0)
+  {b1=b1/10;
+   countb++;
+  }
+  int a[counta];
+  int b[countb];
+  int i;
+  for(i=0;i<counta;i++)
+  { a[i]=reala%10;
+    reala=reala/10;
+  }
+   for(i=0;i<countb;i++)
+  { b[i]=realb%10;
+    realb=realb/10;
+  }
+  //for(i=0;i<counta;i++)
+  //printf("%d",a[i]);
+  //for(i=0;i<countb;i++)
+  //printf("%d",b[i]);
+  
+  if(counta<countb)
+   { int newa[countb];
+     for(i=0;i<counta-1;i++)
+	 newa[i]=a[i];
+	 for(i=counta-1;i<countb;i++)
+	 newa[i]=0; 
+     int c[countb];
+     for(i=0;i<countb;i++)
+    { if(newa[i]+b[i]<10)
+      c[i]=newa[i]+b[i];
+      else
+      { c[i]=newa[i]+b[i]-10;
+         newa[i+1]=newa[i+1]+1;}
+    } 
+      
+   	for(i=0;i<countb;i++)
+    printf("%d",c[countb-1-i]); 
+}
+  else if(counta>countb)
+  { int newb[counta];
+    for(i=0;i<countb-1;i++)
+    newb[i]=b[i];
+    for(i=countb-1;i<counta;i++)
+    newb[i]=0;
+    int c[counta];
+    for(i=0;i<counta;i++)
+    { if(a[i]+newb[i]<10)
+      c[i]=a[i]+newb[i];
+      else
+      { c[i]=a[i]+newb[i]-10;
+         b[i+1]=newb[i+1]+1;}
+    }
+    for(i=0;i<counta;i++)
+    printf("%d",c[counta-1-i]);}
+    else
+    {
+	if(a[counta-1]+b[counta-1]<10)
+      {int c[counta];
+    for(i=0;i<counta;i++)
+    { if(a[i]+b[i]<10)
+      c[i]=a[i]+b[i];
+      else
+      { c[i]=a[i]+b[i]-10;
+         b[i+1]=b[i+1]+1;}
+      }
+     for(i=0;i<counta;i++)
+     printf("%d",c[counta-1-i]);
+	}
+    else
+    {
+     int c[counta+1];
+     c[counta]=1;
+     for(i=0;i<counta;i++)
+    { if(a[i]+b[i]<10)
+      c[i]=a[i]+b[i];
+      else
+      { c[i]=a[i]+b[i]-10;
+         b[i+1]=b[i+1]+1;}
+      }
+    
+     for(i=0;i<counta+1;i++)
+	 printf("%d",c[counta-i]);    }
+}
+}
+int main()
+{ 
+  int n;
+  scanf("%d",&n);
+  int a[n];
+  int b[n];
+  int i;
+  for(i=0;i<n;i++)
+  { int x;
+    int y;
+	scanf("%d%d",&x,&y);
+	a[i]=x;
+	b[i]=y; 
+  }
+  for(i=0;i<n;i++)
+  {
+   bigadd(a[i],b[i]);
+    printf("\n");}
+  
+
+     return 0;
+ }
